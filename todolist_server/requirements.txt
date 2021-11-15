@@ -1,0 +1,11 @@
+Django>=3.2.9
+django_extensions
+django-tables2
+django-tablib
+django-filter
+django-crispy-forms
+django-reversion
+django-import-export
+psycopg2-binary
+
+
