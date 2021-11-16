@@ -5,20 +5,20 @@
         <span class="title">Please log in first</span>
     </nav>
     <link rel="stylesheet" href="{% static 'task_display/login.css' %}">
-        <div class="row s6 formcontainer">
-            <form class="col" action="{% url 'login' %}" method="POST">
-                {% csrf_token %}
-                <div class="input-field row">
-                    <i class="material-icons prefix">account_circle</i>
-                    <input placeholder="Username" id="username" type="text" class="validate">
-                </div>
-                <div class="input-field row">
-                    <i class="material-icons prefix">lock</i>
-                    <input placeholder="Password" id="password" type="password" class="validate">
-                </div>
-                <button class="btn waves-effect waves-light" type="submit" name="login">Sign in
-                    <i class="material-icons right">send</i>
-                </button>
-            </form>
-        </div>
+    <div class="row s6 formcontainer">
+        <form class="col z-depth-3" action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <div class="input-field row">
+                <i class="material-icons prefix">account_circle</i>
+                <input placeholder="Username" id="username" type="text" class="validate">
+            </div>
+            <div class="input-field row">
+                <i class="material-icons prefix">lock</i>
+                <input placeholder="Password" id="password" type="password" class="validate">
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="login">Sign in
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+    </div>
 {% endblock %}

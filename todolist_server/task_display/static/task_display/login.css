@@ -12,3 +12,7 @@ nav {
 .title {
     padding: 0;
 }
+
+form {
+    padding: +50px !important;
+}
