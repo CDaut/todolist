@@ -33,3 +33,7 @@ def login_view(request):
         else:
             context['error'] = 'Invalid username or password'
             return render(request, 'user_manager/login.html', context)
+
+
+def redirect_to_login_view(request):
+    return redirect('login')

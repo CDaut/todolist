@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from user_manager.views import redirect_to_login_view
+
 urlpatterns = [
     path('', include('task_display.urls')),
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
-    path('accounts/', include('user_manager.urls'))
+    path('accounts/', include('user_manager.urls')),
+    path('login/', redirect_to_login_view)
 ]
