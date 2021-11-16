@@ -16,6 +16,8 @@ framework. Because of the docker-compose setup it works with an external Postgre
 
 ### Setup
 
-1. Run `docker-compose up` to start database and webserver container.
-2. Run `docker exec -it <container-name> /bin/bash` to open a terminal into the container.
-3. Run `python3 manage.py createsuperuser` to create the initial admin user.
+1. Change the credentials in enviroment.env . This file is on GitHub! Use a generator like https://djecrety.ir/ to
+   generate a Django secret key
+2. Run `docker-compose up` to start database and webserver container.
+3. Run `docker exec -it <container-name> /bin/bash` to open a terminal into the container.
+4. Run `python3 manage.py createsuperuser` to create the initial admin user.
