@@ -1,11 +1,5 @@
 Django>=3.2.9
-django_extensions
-django-tables2
-django-tablib
-django-filter
-django-crispy-forms
-django-reversion
-django-import-export
-psycopg2-binary
-
-
+psycopg2-binary # driver for postgres
+djangorestframework>=3.12.4 # REST API package
+markdown>=3.3.4 # Markdown support for the browsable API.
+django-filter  # Filtering support
