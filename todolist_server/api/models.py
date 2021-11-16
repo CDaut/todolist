@@ -39,7 +39,7 @@ class Task(models.Model):
     # parameters in the eisenhower matrix
     importance = models.IntegerField()
     urgency = models.IntegerField()
-    # the base importance that this task cannot drop below.
+    # the todolist_server importance that this task cannot drop below.
     base_importance = models.IntegerField()
 
     # parameters for different functions
