@@ -1,5 +1,5 @@
 from django.db import models
-from users.models import ApplicationUser
+from user_manager.models import ApplicationUser
 
 '''
 The Category that a certain task fits into
@@ -10,6 +10,9 @@ class Category(models.Model):
     title = models.CharField(max_length=200)
     color = models.IntegerField()
 
+    def __str__(self):
+        return self.title
+
 
 '''
 Model for a task
@@ -19,18 +22,19 @@ MODIFIER_FUNCTIONS: Possible functions by which the task priority can increase o
 
 class Task(models.Model):
     title = models.CharField(max_length=150)
-    description = models.TextField()
+    description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(ApplicationUser, on_delete=models.CASCADE)
-    due_date = models.DateTimeField()
+    due_date = models.DateTimeField(blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     MODIFIER_FUNCTIONS = [
+        ('n', 'none'),
         ('e', 'exponential'),
         ('l', 'linear'),
     ]
     # function by which the task importance increases or decreases
-    modifier_function = models.CharField(choices=MODIFIER_FUNCTIONS, max_length=2)
+    modifier_function = models.CharField(choices=MODIFIER_FUNCTIONS, max_length=2, blank=True)
 
     # parameters in the eisenhower matrix
     importance = models.IntegerField()
@@ -39,5 +43,8 @@ class Task(models.Model):
     base_importance = models.IntegerField()
 
     # parameters for different functions
-    m = models.FloatField()  # y(x) = m * x + base_importance. This is the m factor.
-    exponent = models.FloatField()  # y(x) = e^(exponent * x) + base_importance. This is the decay factor
+    m = models.FloatField(blank=True)  # y(x) = m * x + base_importance. This is the m factor.
+    exponent = models.FloatField(blank=True)  # y(x) = e^(exponent * x) + base_importance. This is the decay factor
+
+    def __str__(self):
+        return self.title

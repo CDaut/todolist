@@ -10,7 +10,7 @@ class TaskSerializer(serializers.HyperlinkedModelSerializer):
         fields = '__all__'
 
 
-# ViewSets define the view behavior.
+# ViewSets define the task_display behavior.
 class TaskViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
