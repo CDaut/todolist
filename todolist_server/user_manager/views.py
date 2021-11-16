@@ -26,6 +26,8 @@ def login_view(request):
 
             # check if this login attempt has a next parameter
             next_url = request.POST['next'] if 'next' in request.POST else 'tasklist'
+            # fix next_url sometimes being undefined because of js weirdness...
+            next_url = 'tasklist' if next_url == 'undefined' else next_url
             print(next_url)
             # redirect appropriately
             return redirect(next_url)

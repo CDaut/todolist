@@ -24,8 +24,14 @@
     </div>
     <script type="text/javascript">
         window.onload = () => {
+            //possibly set the redirect dorm field
             const input = document.getElementById("input_redirect_to");
             input.setAttribute("value", window.location.search.substr(1).split("=")[1]);
+
+            //create Error toast if needed
+            if ("{{ error }}" !== "") {
+                M.toast({html: '{{ error }}'});
+            }
         }
     </script>
 {% endblock %}
