@@ -1,0 +1,14 @@
+.formcontainer {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    margin-top: 10em;
+}
+
+nav {
+    text-align: center;
+}
+
+.title {
+    padding: 0;
+}

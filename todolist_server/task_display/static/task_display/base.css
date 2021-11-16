@@ -17,3 +17,11 @@ header, main, footer {
 body {
     background-color: #202123;
 }
+
+.divcenter {
+    align-items: center;
+}
+
+input {
+    color: #d2d2d2;
+}
