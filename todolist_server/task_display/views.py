@@ -12,4 +12,4 @@ def list_tasks_as_list(request):
 
 
 def redirect_to_list_view(request):
-    return redirect('list/')
+    return redirect('tasklist')
