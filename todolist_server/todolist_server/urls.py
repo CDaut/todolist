@@ -20,6 +20,7 @@ from user_manager.views import redirect_to_login_view
 
 urlpatterns = [
     path('', include('task_display.urls')),
+    path('', include('pwa.urls')),
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
     path('accounts/', include('user_manager.urls')),
