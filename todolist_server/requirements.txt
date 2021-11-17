@@ -4,4 +4,4 @@ djangorestframework>=3.12.4 # REST API package
 markdown>=3.3.4 # Markdown support for the browsable API.
 django-filter  # Filtering support
 django-pwa>=1.0.10
-
+django-crispy-forms>=1.13.0

@@ -1,0 +1,9 @@
+{% extends "base/menubar.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block offset_content %}
+    <link rel="stylesheet" href="{% static 'task_display/create_user.css' %}">
+    <div class="row s6 formcontainer">
+        {% crispy form %}
+    </div>
+{% endblock %}

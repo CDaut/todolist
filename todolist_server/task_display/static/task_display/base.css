@@ -1,15 +1,16 @@
 
-header, main, footer {
-    padding-left: 300px;
+header, main, footer, .offset-content, .title {
+    padding-left: 350px;
 }
 
 .title {
     font-size: 1.7em;
-    padding-left: 350px;
 }
 
+
+
 @media only screen and (max-width: 992px) {
-    header, main, footer, .title {
+    header, main, footer, .title, .offset-content {
         padding-left: 0;
     }
 }

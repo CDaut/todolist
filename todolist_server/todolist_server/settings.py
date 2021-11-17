@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pwa',
+    'crispy_forms',
     'api',
     'rest_framework',
     'user_manager',
