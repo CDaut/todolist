@@ -23,8 +23,11 @@
             <div class="divider"></div>
         </li>
         <li><a class="waves-effect" href="#!"><i class="material-icons">settings</i>Settings</a></li>
-        <li><a class="waves-effect" href="{% url 'adduser' %}"><i class="material-icons">person_add_alt</i>Add user</a>
-        </li>
+        {% if user.is_admin %}
+            <li>
+                <a class="waves-effect" href="{% url 'adduser' %}"><i class="material-icons">person_add_alt</i>Add user</a>
+            </li>
+        {% endif %}
     </ul>
     <div class="offset-content">
         {% block offset_content %}

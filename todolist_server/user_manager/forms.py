@@ -10,7 +10,6 @@ class CreateUserForm(ModelForm):
     email = CharField(widget=EmailInput(), required=True, label='E-mail')
     first_name = CharField(required=True, label='First name')
     last_name = CharField(required=True, label='Last name')
-    is_superuser = BooleanField(widget=CheckboxInput(), label='Is this user an admin?')
 
     helper = FormHelper()
     helper.form_class = "col z-depth-3"
@@ -19,4 +18,4 @@ class CreateUserForm(ModelForm):
 
     class Meta:
         model = User
-        fields = ('username', 'password', 'email', 'first_name', 'last_name', 'is_superuser')
+        fields = ('username', 'password', 'email', 'first_name', 'last_name')

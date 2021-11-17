@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from user_manager.forms import CreateUserForm
@@ -32,7 +33,7 @@ def handle_login_post(request, context):
         # check if this login attempt has a next parameter
         next_url = request.POST['next'] if 'next' in request.POST else 'tasklist'
         # fix next_url sometimes being undefined because of js weirdness...
-        next_url = 'tasklist' if next_url == 'undefined' else next_url
+        next_url = 'tasklist' if '/' not in next_url else next_url
 
         # redirect appropriately
         return redirect(next_url)
@@ -40,6 +41,26 @@ def handle_login_post(request, context):
     else:
         context['error'] = 'Invalid username or password'
         return render(request, 'user_manager/login.html', context)
+
+
+def handle_adduser_get(request, context):
+    return render(request, 'user_manager/adduser.html', context)
+
+
+def handle_adduser_post(request, context):
+    # check if user already exists
+    if User.objects.all().filter(username=request.POST['username']).count() != 0:
+        context['error'] = 'A user named "' + request.POST['username'] + '" already exists.'
+        return render(request, 'user_manager/adduser.html', context)
+    else:
+        User.objects.create_user(username=request.POST['username'],
+                                 email=request.POST['email'],
+                                 password=request.POST['password'],
+                                 first_name=request.POST['first_name'],
+                                 last_name=request.POST['last_name'])
+        # TODO: Maybe not display this as an error...
+        context['error'] = 'User "' + request.POST['username'] + '" has been created!'
+        return render(request, 'user_manager/adduser.html', context)
 
 
 # Create your views here.
@@ -58,9 +79,12 @@ def redirect_to_login_view(request):
 @login_required
 def adduser_view(request):
     context = {'title': 'Create new user',
-               'fullname': request.user.first_name + ' ' + request.user.last_name,
+               'fullname': request.user.get_full_name(),
                'email': request.user.email,
                'username': request.user.username,
                'form': CreateUserForm(),
                }
-    return render(request, 'user_manager/adduser.html', context)
+    if request.method == 'GET':
+        return handle_adduser_get(request, context)
+    elif request.method == 'POST':
+        return handle_adduser_post(request, context)
