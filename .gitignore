@@ -242,3 +242,5 @@ modules.xml
 # Sonarlint plugin
 .idea/sonarlint
 
+# krita files
+*.kra

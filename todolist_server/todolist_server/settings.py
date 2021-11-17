@@ -143,30 +143,30 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # PWA configuration
-PWA_APP_NAME = 'My App'
-PWA_APP_DESCRIPTION = "My app description"
-PWA_APP_THEME_COLOR = '#0A0302'
-PWA_APP_BACKGROUND_COLOR = '#ffffff'
+PWA_APP_NAME = 'Todolist'
+PWA_APP_DESCRIPTION = "A to-do list app with Eisenhower-matrix support"
+PWA_APP_THEME_COLOR = '#26A69A'
+PWA_APP_BACKGROUND_COLOR = '#202123'
 PWA_APP_DISPLAY = 'standalone'
 PWA_APP_SCOPE = '/'
-PWA_APP_ORIENTATION = 'any'
+PWA_APP_ORIENTATION = 'portrait'
 PWA_APP_START_URL = '/'
 PWA_APP_STATUS_BAR_COLOR = 'default'
 PWA_APP_ICONS = [
     {
-        'src': '/static/images/my_app_icon.png',
-        'sizes': '160x160'
+        'src': '/static/pictures/logos/manifest-icon-512.maskable.png',
+        'sizes': '512x512'
     }
 ]
 PWA_APP_ICONS_APPLE = [
     {
-        'src': '/static/images/my_apple_icon.png',
-        'sizes': '160x160'
+        'src': '/static/pictures/logos/apple-icon-180.png',
+        'sizes': '180x180'
     }
 ]
 PWA_APP_SPLASH_SCREEN = [
     {
-        'src': '/static/images/icons/splash-640x1136.png',
+        'src': '/static/pictures/logos/apple-splash-640x1136.png',
         'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
     }
 ]
