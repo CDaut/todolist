@@ -1,8 +1,25 @@
 {% extends 'base/menubar.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
-{% block content %}
+{% block offset_content %}
     <link rel="stylesheet" href="{% static 'css/add_task.css' %}">
+    <link rel="stylesheet" href="{% static 'css/eisenhower.css' %}">
+    <div class="eisenhower row">
+        <span class="task_span" id="taskspan"></span>
+
+        <div class="category_field">
+            <span class="eisenhower_label z-depth-2 schedule">Schedule</span>
+        </div>
+        <div class="category_field">
+            <span class="eisenhower_label z-depth-2 do">Do</span>
+        </div>
+        <div class="category_field">
+            <span class="eisenhower_label z-depth-2 eliminate">Eliminate</span>
+        </div>
+        <div class="category_field">
+            <span class="eisenhower_label z-depth-2 delegate">Delegate</span>
+        </div>
+    </div>
     <div class="row s6 formcontainer">
         {% csrf_token %}
         {% crispy form %}
@@ -35,6 +52,19 @@
                     exp_field.hide();
                     break;
             }
+        });
+
+        //change label when title is changed
+        $('input[name=title]').on('input', function () {
+            $('#taskspan').text($('input[name=title]').val());
+        });
+
+        //change position when sliders are changed
+        $('input[name=importance]').on('input', function () {
+            $('#taskspan').css('bottom', $('input[name=importance]').val() + '%');
+        });
+        $('input[name=urgency]').on('input', function () {
+            $('#taskspan').css('left', $('input[name=urgency]').val() + '%');
         });
     </script>
 {% endblock %}

@@ -44,6 +44,9 @@ class AddTaskForm(forms.ModelForm):
         'title',
         'description',
         Div(
+            css_id='eisenhower_matrix'
+        ),
+        Div(
             'importance',
             css_class='range-field',
         ),

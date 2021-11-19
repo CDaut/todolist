@@ -1,0 +1,50 @@
+.eisenhower_label {
+    color: #d2d2d2;
+    padding: 0.5em 2em 0.5em 2em;
+    height: 3em;
+}
+
+.eisenhower {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    margin-top: 2em;
+    position: relative;
+}
+
+.category_field {
+    width: 47%;
+    height: 10em;
+    background-color: transparent;
+    padding: 2%;
+    border: 1px solid #9e9e9e;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.task_span {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    background-color: #d2d2d2;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+.do {
+    background-color: #304225;
+}
+
+.delegate {
+    background-color: #215F5E;
+}
+
+.schedule {
+    background-color: #7b7131;
+}
+
+.eliminate {
+    background-color: #531515;
+}
