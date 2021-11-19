@@ -1,0 +1,40 @@
+{% extends 'base/menubar.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/add_task.css' %}">
+    <div class="row s6 formcontainer">
+        {% csrf_token %}
+        {% crispy form %}
+    </div>
+    <script type="text/javascript">
+        const exp_field = $('#div_id_exponent');
+        const m_field = $('#div_id_m');
+
+        $(document).ready(function () {
+            $('select').formSelect();
+
+            //hide unused input fields
+            m_field.hide();
+            exp_field.hide();
+        });
+
+        //change displayed fields depending on selected function
+        $('select[name=modifier_function]').change(function () {
+            switch ($(this).val()) {
+                case 'l':
+                    exp_field.hide();
+                    m_field.show();
+                    break;
+                case 'e':
+                    m_field.hide();
+                    exp_field.show();
+                    break;
+                case 'n':
+                    m_field.hide();
+                    exp_field.hide();
+                    break;
+            }
+        });
+    </script>
+{% endblock %}

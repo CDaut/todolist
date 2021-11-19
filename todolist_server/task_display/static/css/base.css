@@ -7,8 +7,6 @@ header, main, footer, .offset-content, .title {
     font-size: 1.7em;
 }
 
-
-
 @media only screen and (max-width: 992px) {
     header, main, footer, .title, .offset-content {
         padding-left: 0;
@@ -24,5 +22,9 @@ body {
 }
 
 input {
+    color: #d2d2d2;
+}
+
+textarea{
     color: #d2d2d2;
 }

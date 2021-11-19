@@ -5544,7 +5544,7 @@ button.btn-floating {
 }
 
 .dropdown-content {
-  background-color: #fff;
+  background-color: #202123;
   margin: 0;
   display: none;
   min-width: 100px;
@@ -7408,13 +7408,12 @@ input[type=range]::-webkit-slider-thumb {
   height: 14px;
   width: 14px;
   border-radius: 50%;
-  background: #26a69a;
   -webkit-transition: -webkit-box-shadow .3s;
   transition: -webkit-box-shadow .3s;
   transition: box-shadow .3s;
   transition: box-shadow .3s, -webkit-box-shadow .3s;
   -webkit-appearance: none;
-  background-color: #26a69a;
+  background: #26a69a;
   -webkit-transform-origin: 50% 50%;
           transform-origin: 50% 50%;
   margin: -5px 0 0 0;
@@ -7425,11 +7424,6 @@ input[type=range]::-webkit-slider-thumb {
           box-shadow: 0 0 0 10px rgba(38, 166, 154, 0.26);
 }
 
-input[type=range] {
-  /* fix for FF unable to apply focus style bug  */
-  border: 1px solid white;
-  /*required for proper track sizing in FF*/
-}
 
 input[type=range]::-moz-range-track {
   height: 3px;

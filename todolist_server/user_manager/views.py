@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from user_manager.forms import CreateUserForm
+from api.models import ApplicationUser
 
 
 def handle_login_get(request, context):
@@ -53,11 +54,14 @@ def handle_adduser_post(request, context):
         context['error'] = 'A user named "' + request.POST['username'] + '" already exists.'
         return render(request, 'user_manager/adduser.html', context)
     else:
-        User.objects.create_user(username=request.POST['username'],
-                                 email=request.POST['email'],
-                                 password=request.POST['password'],
-                                 first_name=request.POST['first_name'],
-                                 last_name=request.POST['last_name'])
+        user = User.objects.create_user(username=request.POST['username'],
+                                        email=request.POST['email'],
+                                        password=request.POST['password'],
+                                        first_name=request.POST['first_name'],
+                                        last_name=request.POST['last_name'])
+        # also create the corresponding ApplicationUser
+        ApplicationUser.objects.create(auth_user=user)
+
         # TODO: Maybe not display this as an error...
         context['error'] = 'User "' + request.POST['username'] + '" has been created!'
         return render(request, 'user_manager/adduser.html', context)

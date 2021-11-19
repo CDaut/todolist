@@ -1,0 +1,22 @@
+.formcontainer {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    margin-top: 2em;
+    margin-left: 13em;
+}
+
+@media only screen and (max-width: 992px) {
+    .formcontainer {
+        margin-left: 0;
+    }
+}
+
+form {
+    padding: 5% !important;
+    width: 80%;
+}
+
+.hidden {
+    display: none;
+}

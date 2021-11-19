@@ -87,6 +87,7 @@ DATABASES = {
         'PASSWORD': os.environ["POSTGRES_PASSWORD"],
         'HOST': 'db',
         'PORT': '5432',
+        'DISABLE_SERVER_SIDE_CURSORS': True,
     }
 
 }
