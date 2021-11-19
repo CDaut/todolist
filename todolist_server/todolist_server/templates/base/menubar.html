@@ -8,7 +8,12 @@
     <ul id="slide-out" class="sidenav sidenav-fixed">
         <li>
             <div class="user-view">
-                <a href="#user"><img class="circle" src=""></a>
+                <a href="#user">
+                    <img class="circle"
+                         src="https://eu.ui-avatars.com/api/?name={{ user.first_name }}+{{ user.last_name }}&background=random"
+                         alt="User profile picture"
+                    >
+                </a>
                 <a href="#name"><span class="white-text name">{{ fullname }} | {{ username }}</span></a>
                 <a href="#email"><span class="white-text email">{{ email }}</span></a>
             </div>
@@ -23,7 +28,7 @@
             <div class="divider"></div>
         </li>
         <li><a class="waves-effect" href="#!"><i class="material-icons">settings</i>Settings</a></li>
-        {% if user.is_admin %}
+        {% if user.is_superuser %}
             <li>
                 <a class="waves-effect" href="{% url 'adduser' %}"><i class="material-icons">person_add_alt</i>Add user</a>
             </li>
