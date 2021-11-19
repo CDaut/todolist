@@ -29,10 +29,12 @@ class AddTaskForm(forms.ModelForm):
 
     m = forms.FloatField(
         required=False,
+        label='coefficient'
     )
 
     exponent = forms.FloatField(
         required=False,
+        label='lambda'
     )
 
     helper = FormHelper()
