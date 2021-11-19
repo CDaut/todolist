@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from user_manager.forms import CreateUserForm
 
 
@@ -88,3 +88,8 @@ def adduser_view(request):
         return handle_adduser_get(request, context)
     elif request.method == 'POST':
         return handle_adduser_post(request, context)
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
