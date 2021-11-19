@@ -3,6 +3,7 @@
     padding: 0.5em 2em 0.5em 2em;
     height: 3em;
     border-radius: 5px;
+    align-self: center;
 }
 
 .eisenhower {
