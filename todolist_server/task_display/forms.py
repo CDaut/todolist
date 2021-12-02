@@ -7,7 +7,7 @@ from crispy_forms.layout import Submit, Div, Layout
 class AddTaskForm(forms.ModelForm):
     due_date = forms.DateTimeField(
         widget=forms.TextInput(
-            attrs={'type': 'date'}
+            attrs={'type': 'datetime-local'}
         ),
         required=False
     )
