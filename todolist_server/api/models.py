@@ -26,7 +26,7 @@ class Task(models.Model):
     description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(ApplicationUser, on_delete=models.CASCADE)
-    due_date = models.DateTimeField(blank=True)
+    due_date = models.DateTimeField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     MODIFIER_FUNCTIONS = [
@@ -44,8 +44,9 @@ class Task(models.Model):
     base_importance = models.IntegerField()
 
     # parameters for different functions
-    m = models.FloatField(blank=True)  # y(x) = m * x + base_importance. This is the m factor.
-    exponent = models.FloatField(blank=True)  # y(x) = e^(exponent * x) + base_importance. This is the decay factor
+    m = models.FloatField(blank=True, default=0)  # y(x) = m * x + base_importance. This is the m factor.
+    exponent = models.FloatField(blank=True,
+                                 default=0)  # y(x) = e^(exponent * x) + base_importance. This is the decay factor
 
     def __str__(self):
         return self.title

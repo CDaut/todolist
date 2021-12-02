@@ -1,6 +1,46 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from task_display.forms import AddTaskForm
+from api.models import Task, Category
+from user_manager.models import ApplicationUser
+import logging
+
+
+def create_new_task(request):
+    # get the associated app user
+    appuser = ApplicationUser.objects.get(auth_user=request.user)
+    cat = Category.objects.get(pk=request.POST.get('category'))
+
+    # create new Task
+    task = Task.objects.create(
+        title=request.POST.get('title'),
+        created_by=appuser,
+        category=cat,
+        modifier_function=request.POST.get('modifier_function'),
+        importance=request.POST.get('importance'),
+        urgency=request.POST.get('urgency'),
+        base_importance=request.POST.get('base_importance'),
+    )
+
+    # add all optional parameters
+    if request.POST.get('description') != '':
+        task.description = request.POST.get('description')
+
+    if request.POST.get('due_date') != '':
+        task.due_date = request.POST.get('due_date')
+
+    if request.POST.get('modifier_function') != '':
+        task.modifier_function = request.POST.get('modifier_function')
+
+    if request.POST.get('m') != '':
+        task.m = request.POST.get('m')
+
+    if request.POST.get('exponent') != '':
+        task.exponent = request.POST.get('exponent')
+
+    task.save()
+
+    logging.info(f'User {request.user.username} created task {task}')
 
 
 # Create your views here.
@@ -19,6 +59,10 @@ def redirect_to_list_view(request):
 
 @login_required
 def add_task_view(request):
+    # if a post request has been made, create a new task
+    if request.method == 'POST':
+        create_new_task(request)
+
     context = {'title': 'New task',
                'fullname': request.user.first_name + ' ' + request.user.last_name,
                'email': request.user.email,

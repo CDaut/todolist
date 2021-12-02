@@ -8,7 +8,8 @@ class AddTaskForm(forms.ModelForm):
     due_date = forms.DateTimeField(
         widget=forms.TextInput(
             attrs={'type': 'date'}
-        )
+        ),
+        required=False
     )
 
     importance = forms.IntegerField(
