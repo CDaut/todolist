@@ -1,0 +1,29 @@
+{% extends 'base/menubar.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block offset_content %}
+    <link rel="stylesheet" href="{% static 'css/eisenhower.css' %}">
+    <div class="eisenhower row">
+        {% for task in tasks %}
+            <span class="task_span"
+                  style="bottom: {{ task.importance }}%;
+                          left: {{ task.urgency }}%;"
+            >
+                {{ task }}
+            </span>
+        {% endfor %}
+
+        <div class="category_field border-top-left">
+            <span class="eisenhower_label z-depth-2 schedule">Schedule</span>
+        </div>
+        <div class="category_field border-top-right">
+            <span class="eisenhower_label z-depth-2 do">Do</span>
+        </div>
+        <div class="category_field border-bottom-left">
+            <span class="eisenhower_label z-depth-2 eliminate">Eliminate</span>
+        </div>
+        <div class="category_field border-bottom-right">
+            <span class="eisenhower_label z-depth-2 delegate">Delegate</span>
+        </div>
+    </div>
+{% endblock %}

@@ -35,6 +35,10 @@
             //hide unused input fields
             m_field.hide();
             exp_field.hide();
+
+            {% if success %}
+                M.toast({html: '{{ success }}'})
+            {% endif %}
         });
 
         //change displayed fields depending on selected function

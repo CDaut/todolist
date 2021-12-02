@@ -42,6 +42,8 @@ def create_new_task(request):
 
     logging.info(f'User {request.user.username} created task {task}')
 
+    return True
+
 
 # Create your views here.
 @login_required
@@ -59,13 +61,28 @@ def redirect_to_list_view(request):
 
 @login_required
 def add_task_view(request):
-    # if a post request has been made, create a new task
-    if request.method == 'POST':
-        create_new_task(request)
-
     context = {'title': 'New task',
                'fullname': request.user.first_name + ' ' + request.user.last_name,
                'email': request.user.email,
                'username': request.user.username,
                'form': AddTaskForm()}
+    # if a post request has been made, create a new task
+    if request.method == 'POST':
+        success = create_new_task(request)
+
+        if success:
+            context['success'] = f'Created task {request.POST.get("title")}'
+
     return render(request, 'task_display/add_task.html', context)
+
+
+@login_required
+def eisenhower_view(request):
+    context = {'title': 'Eisenhower matrix',
+               'fullname': request.user.first_name + ' ' + request.user.last_name,
+               'email': request.user.email,
+               'username': request.user.username,
+               'tasks': Task.objects.filter(
+                   created_by=ApplicationUser.objects.get(auth_user=request.user))
+               }
+    return render(request, 'task_display/eisenhower.html', context)
