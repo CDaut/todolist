@@ -1,6 +1,10 @@
 
-header, main, footer, .offset-content, .title {
-    padding-left: 350px;
+header, main, footer, .offset-content {
+    padding-left: 300px;
+}
+
+.title {
+    padding-left: 315px;
 }
 
 .title {

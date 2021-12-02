@@ -20,7 +20,7 @@
             <span class="eisenhower_label z-depth-2 delegate">Delegate</span>
         </div>
     </div>
-    <div class="row s6 formcontainer">
+    <div class="row formcontainer">
         {% csrf_token %}
         {% crispy form %}
     </div>
@@ -38,6 +38,10 @@
 
             {% if success %}
                 M.toast({html: '{{ success }}'})
+            {% endif %}
+
+            {% if error %}
+                M.toast({html: '{{ error }}'})
             {% endif %}
         });
 

@@ -11,6 +11,9 @@ def create_new_task(request):
     appuser = ApplicationUser.objects.get(auth_user=request.user)
     cat = Category.objects.get(pk=request.POST.get('category'))
 
+    if Task.objects.filter(title=request.POST.get('title')).count() != 0:
+        return 'Task already exists'
+
     # create new Task
     task = Task.objects.create(
         title=request.POST.get('title'),
@@ -51,7 +54,9 @@ def list_tasks_as_list(request):
     context = {'title': 'Tasklist',
                'fullname': request.user.first_name + ' ' + request.user.last_name,
                'email': request.user.email,
-               'username': request.user.username}
+               'username': request.user.username,
+               'tasks': Task.objects.filter(created_by=ApplicationUser.objects.get(auth_user=request.user)),
+               'categories': Category.objects.all()}
     return render(request, 'task_display/task_list.html', context)
 
 
@@ -72,6 +77,8 @@ def add_task_view(request):
 
         if success:
             context['success'] = f'Created task {request.POST.get("title")}'
+        else:
+            context['error'] = f'Task with name {request.POST.get("title")} already exists!'
 
     return render(request, 'task_display/add_task.html', context)
 

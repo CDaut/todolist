@@ -8,7 +8,7 @@ The Category that a certain task fits into
 
 class Category(models.Model):
     title = models.CharField(max_length=200)
-    color = models.IntegerField()
+    color = models.CharField(max_length=9)
     created_by = models.ForeignKey(ApplicationUser, on_delete=models.CASCADE)
 
     def __str__(self):
