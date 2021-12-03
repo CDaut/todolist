@@ -5,26 +5,22 @@
     <div class="row s12">
         <div class="col s12">
             {% for category in categories %}
-                <div class="card blue-grey darken-3">
-                    <div class="card-content white-text">
-                        <ul class="collection with-header">
-                            <li class="collection-header" style="background: {{ category.color }}">
-                                <p class="category-title">
-                                    {{ category }}
-                                </p>
+                <ul class="collection with-header">
+                    <li class="collection-header" style="background: {{ category.color }}">
+                        <p class="category-title">
+                            {{ category }}
+                        </p>
+                    </li>
+                    {% for task in tasks %}
+                        {% ifequal task.category category %}
+                            <li class="collection-item blue-grey darken-3">
+                                <span class="tasktitle">{{ task.title }}</span>
+                                <br>
+                                <span class="taskdescription">{{ task.description }}</span>
                             </li>
-                            {% for task in tasks %}
-                                {% ifequal task.category category %}
-                                    <li class="collection-item blue-grey darken-3">
-                                        <span class="tasktitle">{{ task.title }}</span>
-                                        <br>
-                                        <span class="taskdescription">{{ task.description }}</span>
-                                    </li>
-                                {% endifequal %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
+                        {% endifequal %}
+                    {% endfor %}
+                </ul>
             {% endfor %}
         </div>
     </div>
