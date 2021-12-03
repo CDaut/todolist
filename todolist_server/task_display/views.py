@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from task_display.forms import AddTaskForm, AddCategoryForm
 from api.models import Task, Category
 from user_manager.models import ApplicationUser
@@ -52,12 +53,16 @@ def create_new_task(request):
 # Create your views here.
 @login_required
 def list_tasks_as_list(request):
+    appuser = ApplicationUser.objects.get(auth_user=request.user)
+    rootuser = ApplicationUser.objects.get(auth_user=User.objects.get(is_superuser=True))
+
     context = {'title': 'Tasklist',
                'fullname': request.user.first_name + ' ' + request.user.last_name,
                'email': request.user.email,
                'username': request.user.username,
-               'tasks': Task.objects.filter(created_by=ApplicationUser.objects.get(auth_user=request.user)),
-               'categories': Category.objects.all()}
+               'tasks': Task.objects.filter(created_by=appuser),
+               'categories': Category.objects.filter(created_by=appuser).union(
+                   Category.objects.filter(created_by=rootuser))}
     return render(request, 'task_display/task_list.html', context)
 
 
