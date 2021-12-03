@@ -3095,18 +3095,17 @@ td, th {
 
 .collection {
     margin: 0.5rem 0 1rem 0;
-    border: 1px solid #9aa0a6;
-    border-radius: 10px;
+    border: 1px solid #2d2d31;
+    border-radius: 5px;
     overflow: hidden;
     position: relative;
 }
 
 .collection .collection-item {
-    background-color: #9aa0a6;
+    background-color: #2d2d31;
     line-height: 1.5rem;
     padding: 10px 20px;
     margin: 0;
-    border-bottom: 1px solid #9aa0a6
 }
 
 .collection .collection-item.avatar {
@@ -3129,8 +3128,8 @@ td, th {
 .collection .collection-item.avatar i.circle {
     font-size: 18px;
     line-height: 42px;
-    color: #9aa0a6;
-    background-color: #999;
+    color: #2d2d31;
+    background-color: #2d2d31;
     text-align: center;
 }
 
@@ -3154,11 +3153,11 @@ td, th {
 
 .collection .collection-item.active {
     background-color: #26a69a;
-    color: #9aa0a6;
+    color: #2d2d31;
 }
 
 .collection .collection-item.active .secondary-content {
-    color: #9aa0a6;
+    color: #2d2d31;
 }
 
 .collection a.collection-item {
@@ -3169,7 +3168,7 @@ td, th {
 }
 
 .collection a.collection-item:not(.active):hover {
-    background-color: #9aa0a6;
+    background-color: #2d2d31;
 }
 
 .collection.with-header .collection-header {
