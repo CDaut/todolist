@@ -1,5 +1,5 @@
 from django import forms
-from api.models import Task
+from api.models import Task, Category
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Div, Layout
 
@@ -78,4 +78,24 @@ class AddTaskForm(forms.ModelForm):
             'modifier_function',
             'm',
             'exponent'
+        )
+
+
+class AddCategoryForm(forms.ModelForm):
+    color = forms.CharField(
+        widget=forms.TextInput(
+            attrs={'type': 'color', 'value': '#26a69a'}
+        ),
+    )
+
+    helper = FormHelper()
+    helper.form_class = "col z-depth-3"
+    helper.add_input(Submit('submit', 'Create', css_class='btn waves-effect waves-light'))
+    helper.form_method = 'POST'
+
+    class Meta:
+        model = Category
+        fields = (
+            'title',
+            'color'
         )

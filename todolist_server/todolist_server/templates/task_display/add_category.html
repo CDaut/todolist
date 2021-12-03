@@ -1,0 +1,21 @@
+{% extends "base/menubar.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block offset_content %}
+    <link rel="stylesheet" href="{% static 'css/add_category.css' %}">
+    <div class="row formcontainer">
+        {% csrf_token %}
+        {% crispy form %}
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            {% if success %}
+                M.toast({html: '{{ success }}'})
+            {% endif %}
+
+            {% if error %}
+                M.toast({html: '{{ error }}'})
+            {% endif %}
+        });
+    </script>
+{% endblock %}

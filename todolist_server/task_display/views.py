@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from task_display.forms import AddTaskForm
+from task_display.forms import AddTaskForm, AddCategoryForm
 from api.models import Task, Category
 from user_manager.models import ApplicationUser
 import logging
 
 
+# This is not a view, only a helper function
 def create_new_task(request):
     # get the associated app user
     appuser = ApplicationUser.objects.get(auth_user=request.user)
@@ -93,3 +94,26 @@ def eisenhower_view(request):
                    created_by=ApplicationUser.objects.get(auth_user=request.user))
                }
     return render(request, 'task_display/eisenhower.html', context)
+
+
+@login_required
+def add_category_view(request):
+    context = {'title': 'New category',
+               'fullname': request.user.first_name + ' ' + request.user.last_name,
+               'email': request.user.email,
+               'username': request.user.username,
+               'form': AddCategoryForm()
+               }
+
+    if request.method == 'POST':
+        form = AddCategoryForm(request.POST)
+
+        if form.is_valid():
+            category = form.save(commit=False)
+            category.created_by = ApplicationUser.objects.get(auth_user=request.user)
+            category.save()
+            context['success'] = f'Category {category.title} has been created.'
+        else:
+            context['error'] = 'Error creating category!'
+
+    return render(request, 'task_display/add_category.html', context)

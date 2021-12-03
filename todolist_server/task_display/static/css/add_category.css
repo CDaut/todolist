@@ -1,0 +1,15 @@
+.formcontainer {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    margin-top: 2em;
+}
+
+form {
+    padding: 5% !important;
+    width: 80%;
+}
+
+.btn {
+    margin-top: 1.5em;
+}
