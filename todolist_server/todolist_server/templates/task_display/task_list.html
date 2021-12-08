@@ -7,9 +7,13 @@
             {% for category in categories %}
                 <ul class="collection with-header">
                     <li class="collection-header" style="background: {{ category.color }}">
-                        <p class="category-title">
+                        <span class="category-title">
                             {{ category }}
-                        </p>
+                        </span>
+                        <a class="btn-floating btn-small waves-effect waves-light red deletebutton"
+                           onclick='deleteCategory("{{ category }}")'>
+                            <i class="material-icons">delete</i>
+                        </a>
                     </li>
                     {% for task in tasks %}
                         {% ifequal task.category category %}
@@ -24,4 +28,15 @@
             {% endfor %}
         </div>
     </div>
+    <script type="text/javascript">
+        function deleteCategory(category) {
+            let confirmed = confirm("Are you sure you want to delete the " +
+                "category \"" + category + "\"? This will also delete all associated tasks!");
+
+            if (confirmed) {
+                //TODO: Implement task deletion here via API call
+                console.log(confirmed);
+            }
+        }
+    </script>
 {% endblock %}

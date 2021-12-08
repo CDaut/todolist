@@ -12,3 +12,7 @@
 .taskdescription {
     color: #c3cad1
 }
+
+.deletebutton {
+    float: right;
+}
