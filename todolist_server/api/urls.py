@@ -7,7 +7,7 @@ from rest_framework import routers, serializers, viewsets
 class TaskSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Task
-        fields = '__all__'
+        fields = ['title', 'description']
 
 
 # ViewSets define the todolist_server behavior.
@@ -24,5 +24,5 @@ router.register(r'tasks', TaskViewSet)
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('', include(router.urls)),
-    path('auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
